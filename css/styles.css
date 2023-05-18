@@ -11,6 +11,7 @@
   --background-icons-color: #f4f4fd;
   --icon-border-color: #8e8f99;
   --footer-social-media-bg: #31d0aa;
+  --modal-bg-color: #fcfcfc;
 }
 h1,
 h2,
@@ -46,6 +47,11 @@ body {
 .link {
   text-decoration: none;
   color: inherit;
+
+  transition-property: background-color, color;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link:hover,
 .link:focus {
@@ -81,6 +87,19 @@ body {
 .menu {
   display: flex;
   width: 261px;
+}
+.underline {
+  position: relative;
+}
+.underline::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: var(--hover-color);
+  bottom: 0;
+  left: 0;
+  margin-bottom: -1px;
 }
 
 .menu-item:not(:last-child) {
@@ -202,7 +221,13 @@ body {
   padding: 16px 32px;
   border: 0px;
   cursor: pointer;
+
+  transition-property: background-color, color;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .hero-btn:hover,
 .hero-btn:focus {
   background: var(--hover-color);
@@ -364,7 +389,6 @@ footer {
   width: 264px;
 }
 
-
 .footer-line {
   display: flex;
   align-items: baseline;
@@ -394,6 +418,11 @@ footer {
   border-radius: 50%;
   justify-content: center;
   align-items: center;
+
+  transition-property: background-color, color;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-social-media svg {
   fill: var(--background-sectionteam-color);
@@ -418,6 +447,11 @@ footer {
   color: var(--button-color);
   cursor: pointer;
   padding: 12px 24px;
+
+  transition-property: background-color, color;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover,
@@ -451,8 +485,54 @@ footer {
   width: calc((100% - 48px) / 3);
   background: #ffffff;
 }
+
+.card-item:hover .card-desc-text {
+  position: absolute;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--footer-text-color);
+  top: 0;
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+  background-color: var(--button-color);
+  height: 100%;
+
+  transform: translatey(0%);
+  display: block;
+}
+
+.card-wrapper-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-desc-text {
+  position: absolute;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--footer-text-color);
+  top: 0;
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+  background-color: var(--button-color);
+  height: 100%;
+
+  transform: translatey(100%);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .card-item-link {
   display: block;
+
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 250ms, 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card-item-link:hover,
 .card-item-link:focus {
@@ -491,7 +571,19 @@ footer {
   border-radius: 50%;
   justify-content: center;
   align-items: center;
+
+  transition-property: background-color, color;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.team-media-item-bg:hover,
+.team-media-item-bg:focus {
+  cursor: pointer;
+  background-color: var(--hover-color);
+}
+
 .team-media-link {
   display: block;
 }
@@ -502,17 +594,11 @@ footer {
 .team-social-media {
   display: flex;
   gap: 24px;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .our-team p {
   margin-bottom: 8px;
-}
-
-.team-media-item-bg:hover,
-.team-media-item-bg:focus {
-  cursor: pointer;
-  background-color: var(--hover-color);
 }
 
 /* CUSTOMERS */
@@ -540,6 +626,11 @@ footer {
   color: #8e8f99;
   align-items: center;
   justify-content: center;
+
+  transition-property: background-color, color;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-section h2 {
@@ -557,4 +648,52 @@ footer {
 }
 .team-media-item-bg svg {
   fill: var(--background-sectionteam-color);
+}
+
+/* Modal Window */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  min-width: 408px;
+  min-height: 576px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row-reverse;
+
+  background-color: var(--modal-bg-color);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.close-button {
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  margin-right: 24px;
 }
