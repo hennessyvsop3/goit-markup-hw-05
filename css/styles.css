@@ -503,8 +503,9 @@ footer {
   display: block;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.card-item:focus .card-desc-text {
+.card-item-link:focus .card-desc-text {
   transform: translateY(0%);
+  
 }
 
 .card-wrapper-text {
@@ -704,10 +705,6 @@ footer {
 .close-button:hover,
 .close-button:focus {
   background-color: #404bbf;
+  fill: #ffffff;
   border: none;
-}
-
-.close-button-icon:hover,
-.close-button-icon:focus {
-fill: #ffffff;
 }
